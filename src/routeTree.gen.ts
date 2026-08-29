@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as GymSolutionsRouteImport } from './routes/gym-solutions'
+import { Route as ProductsIndexRouteImport } from './routes/products/index'
+import { Route as SeriesIndexRouteImport } from './routes/series/index'
+import { Route as SeriesSlugRouteImport } from './routes/series/$slug'
+import { Route as ProductsCategoryIndexRouteImport } from './routes/products/$category/index'
+import { Route as ProductsCategorySlugRouteImport } from './routes/products/$category/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GymSolutionsRoute = GymSolutionsRouteImport.update({
+  id: '/gym-solutions',
+  path: '/gym-solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsIndexRoute = ProductsIndexRouteImport.update({
+  id: '/products/',
+  path: '/products/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeriesIndexRoute = SeriesIndexRouteImport.update({
+  id: '/series/',
+  path: '/series/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeriesSlugRoute = SeriesSlugRouteImport.update({
+  id: '/series/$slug',
+  path: '/series/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsCategoryIndexRoute = ProductsCategoryIndexRouteImport.update({
+  id: '/products/$category/',
+  path: '/products/$category/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsCategorySlugRoute = ProductsCategorySlugRouteImport.update({
+  id: '/products/$category/$slug',
+  path: '/products/$category/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/gym-solutions': typeof GymSolutionsRoute
+  '/series/$slug': typeof SeriesSlugRoute
+  '/products/': typeof ProductsIndexRoute
+  '/series/': typeof SeriesIndexRoute
+  '/products/$category/$slug': typeof ProductsCategorySlugRoute
+  '/products/$category/': typeof ProductsCategoryIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/gym-solutions': typeof GymSolutionsRoute
+  '/series/$slug': typeof SeriesSlugRoute
+  '/products': typeof ProductsIndexRoute
+  '/series': typeof SeriesIndexRoute
+  '/products/$category/$slug': typeof ProductsCategorySlugRoute
+  '/products/$category': typeof ProductsCategoryIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/gym-solutions': typeof GymSolutionsRoute
+  '/series/$slug': typeof SeriesSlugRoute
+  '/products/': typeof ProductsIndexRoute
+  '/series/': typeof SeriesIndexRoute
+  '/products/$category/$slug': typeof ProductsCategorySlugRoute
+  '/products/$category/': typeof ProductsCategoryIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/gym-solutions'
+    | '/series/$slug'
+    | '/products/'
+    | '/series/'
+    | '/products/$category/$slug'
+    | '/products/$category/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/gym-solutions'
+    | '/series/$slug'
+    | '/products'
+    | '/series'
+    | '/products/$category/$slug'
+    | '/products/$category'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/gym-solutions'
+    | '/series/$slug'
+    | '/products/'
+    | '/series/'
+    | '/products/$category/$slug'
+    | '/products/$category/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  GymSolutionsRoute: typeof GymSolutionsRoute
+  SeriesSlugRoute: typeof SeriesSlugRoute
+  ProductsIndexRoute: typeof ProductsIndexRoute
+  SeriesIndexRoute: typeof SeriesIndexRoute
+  ProductsCategorySlugRoute: typeof ProductsCategorySlugRoute
+  ProductsCategoryIndexRoute: typeof ProductsCategoryIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gym-solutions': {
+      id: '/gym-solutions'
+      path: '/gym-solutions'
+      fullPath: '/gym-solutions'
+      preLoaderRoute: typeof GymSolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/': {
+      id: '/products/'
+      path: '/products'
+      fullPath: '/products/'
+      preLoaderRoute: typeof ProductsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/series/': {
+      id: '/series/'
+      path: '/series'
+      fullPath: '/series/'
+      preLoaderRoute: typeof SeriesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/series/$slug': {
+      id: '/series/$slug'
+      path: '/series/$slug'
+      fullPath: '/series/$slug'
+      preLoaderRoute: typeof SeriesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/$category/': {
+      id: '/products/$category/'
+      path: '/products/$category'
+      fullPath: '/products/$category/'
+      preLoaderRoute: typeof ProductsCategoryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/$category/$slug': {
+      id: '/products/$category/$slug'
+      path: '/products/$category/$slug'
+      fullPath: '/products/$category/$slug'
+      preLoaderRoute: typeof ProductsCategorySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  GymSolutionsRoute: GymSolutionsRoute,
+  SeriesSlugRoute: SeriesSlugRoute,
+  ProductsIndexRoute: ProductsIndexRoute,
+  SeriesIndexRoute: SeriesIndexRoute,
+  ProductsCategorySlugRoute: ProductsCategorySlugRoute,
+  ProductsCategoryIndexRoute: ProductsCategoryIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
