@@ -23,7 +23,7 @@ export async function submitEnquiry(payload: EnquiryPayload): Promise<{ ok: true
   return { ok: true };
 }
 
-export const WHATSAPP_NUMBER = "";
+export const WHATSAPP_NUMBER = "918629803939";
 
 export function whatsappLink(message: string): string {
   const base = WHATSAPP_NUMBER
