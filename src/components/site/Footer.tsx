@@ -65,7 +65,7 @@ export function Footer() {
               </Link>
             </li>
             <li>
-              <Link to="/series/timberline" className="hover:text-foreground">
+              <Link to="/series/$slug" params={{ slug: "timberline" }} className="hover:text-foreground">
                 Timberline Series
               </Link>
             </li>
