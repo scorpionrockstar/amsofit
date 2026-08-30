@@ -28,7 +28,7 @@ export function EnquiryForm({
         setBusy(true);
         await submitEnquiry({
           type,
-          productModel,
+          ...(productModel ? { productModel } : {}),
           name: String(data.get("name") ?? ""),
           email: String(data.get("email") ?? ""),
           phone: String(data.get("phone") ?? ""),

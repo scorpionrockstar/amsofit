@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as CataloguesRouteImport } from './routes/catalogues'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GymSolutionsRouteImport } from './routes/gym-solutions'
 import { Route as ProductsIndexRouteImport } from './routes/products/index'
 import { Route as SeriesIndexRouteImport } from './routes/series/index'
@@ -26,6 +28,16 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CataloguesRoute = CataloguesRouteImport.update({
+  id: '/catalogues',
+  path: '/catalogues',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GymSolutionsRoute = GymSolutionsRouteImport.update({
@@ -62,6 +74,8 @@ const ProductsCategorySlugRoute = ProductsCategorySlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/catalogues': typeof CataloguesRoute
+  '/contact': typeof ContactRoute
   '/gym-solutions': typeof GymSolutionsRoute
   '/series/$slug': typeof SeriesSlugRoute
   '/products/': typeof ProductsIndexRoute
@@ -72,6 +86,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/catalogues': typeof CataloguesRoute
+  '/contact': typeof ContactRoute
   '/gym-solutions': typeof GymSolutionsRoute
   '/series/$slug': typeof SeriesSlugRoute
   '/products': typeof ProductsIndexRoute
@@ -83,6 +99,8 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/catalogues': typeof CataloguesRoute
+  '/contact': typeof ContactRoute
   '/gym-solutions': typeof GymSolutionsRoute
   '/series/$slug': typeof SeriesSlugRoute
   '/products/': typeof ProductsIndexRoute
@@ -95,6 +113,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/catalogues'
+    | '/contact'
     | '/gym-solutions'
     | '/series/$slug'
     | '/products/'
@@ -105,6 +125,8 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/catalogues'
+    | '/contact'
     | '/gym-solutions'
     | '/series/$slug'
     | '/products'
@@ -115,6 +137,8 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/catalogues'
+    | '/contact'
     | '/gym-solutions'
     | '/series/$slug'
     | '/products/'
@@ -126,6 +150,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CataloguesRoute: typeof CataloguesRoute
+  ContactRoute: typeof ContactRoute
   GymSolutionsRoute: typeof GymSolutionsRoute
   SeriesSlugRoute: typeof SeriesSlugRoute
   ProductsIndexRoute: typeof ProductsIndexRoute
@@ -148,6 +174,20 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/catalogues': {
+      id: '/catalogues'
+      path: '/catalogues'
+      fullPath: '/catalogues'
+      preLoaderRoute: typeof CataloguesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gym-solutions': {
@@ -198,6 +238,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CataloguesRoute: CataloguesRoute,
+  ContactRoute: ContactRoute,
   GymSolutionsRoute: GymSolutionsRoute,
   SeriesSlugRoute: SeriesSlugRoute,
   ProductsIndexRoute: ProductsIndexRoute,

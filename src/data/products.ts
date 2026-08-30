@@ -328,8 +328,8 @@ for (const machine of timberline) {
     shortDescription: `Timberline selectorized ${machine.name.toLowerCase()} machine for commercial strength floors.`,
     description: `The ${machine.model} ${machine.name} is part of the AMSOFIT Timberline selectorized strength series, engineered with a guided motion path and commercial-grade frame construction.`,
     images: [machine.image],
-    featured: machine.featured,
-    bestSeller: machine.best,
+    ...(machine.featured ? { featured: true } : {}),
+    ...(machine.best ? { bestSeller: true } : {}),
     commercial: true,
     inStock: true,
     specifications: [
