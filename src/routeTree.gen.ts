@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CataloguesRouteImport } from './routes/catalogues'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GymSolutionsRouteImport } from './routes/gym-solutions'
 import { Route as ProductsIndexRouteImport } from './routes/products/index'
 import { Route as SeriesIndexRouteImport } from './routes/series/index'
@@ -32,6 +33,11 @@ const AboutRoute = AboutRouteImport.update({
 const CataloguesRoute = CataloguesRouteImport.update({
   id: '/catalogues',
   path: '/catalogues',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GymSolutionsRoute = GymSolutionsRouteImport.update({
@@ -69,6 +75,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/catalogues': typeof CataloguesRoute
+  '/contact': typeof ContactRoute
   '/gym-solutions': typeof GymSolutionsRoute
   '/series/$slug': typeof SeriesSlugRoute
   '/products/': typeof ProductsIndexRoute
@@ -80,6 +87,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/catalogues': typeof CataloguesRoute
+  '/contact': typeof ContactRoute
   '/gym-solutions': typeof GymSolutionsRoute
   '/series/$slug': typeof SeriesSlugRoute
   '/products': typeof ProductsIndexRoute
@@ -92,6 +100,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/catalogues': typeof CataloguesRoute
+  '/contact': typeof ContactRoute
   '/gym-solutions': typeof GymSolutionsRoute
   '/series/$slug': typeof SeriesSlugRoute
   '/products/': typeof ProductsIndexRoute
@@ -105,6 +114,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/catalogues'
+    | '/contact'
     | '/gym-solutions'
     | '/series/$slug'
     | '/products/'
@@ -116,6 +126,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/catalogues'
+    | '/contact'
     | '/gym-solutions'
     | '/series/$slug'
     | '/products'
@@ -127,6 +138,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/catalogues'
+    | '/contact'
     | '/gym-solutions'
     | '/series/$slug'
     | '/products/'
@@ -139,6 +151,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   CataloguesRoute: typeof CataloguesRoute
+  ContactRoute: typeof ContactRoute
   GymSolutionsRoute: typeof GymSolutionsRoute
   SeriesSlugRoute: typeof SeriesSlugRoute
   ProductsIndexRoute: typeof ProductsIndexRoute
@@ -168,6 +181,13 @@ declare module '@tanstack/react-router' {
       path: '/catalogues'
       fullPath: '/catalogues'
       preLoaderRoute: typeof CataloguesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gym-solutions': {
@@ -219,6 +239,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CataloguesRoute: CataloguesRoute,
+  ContactRoute: ContactRoute,
   GymSolutionsRoute: GymSolutionsRoute,
   SeriesSlugRoute: SeriesSlugRoute,
   ProductsIndexRoute: ProductsIndexRoute,
