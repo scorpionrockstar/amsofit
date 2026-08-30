@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -79,16 +79,33 @@ export function Footer() {
 
         <div>
           <p className="eyebrow mb-4">Get In Touch</p>
-          <ul className="space-y-3 text-sm text-muted-foreground">
+<ul className="space-y-3 text-sm text-muted-foreground">
             <li className="flex gap-2">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> India — nationwide
-              supply &amp; installation
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+              <span>Opposite Reliance Smart Bazaar, Una, Himachal Pradesh, India</span>
             </li>
             <li className="flex gap-2">
-              <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> Contact for details
+              <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+              <a href="tel:+918629803939" className="transition-colors hover:text-foreground">
+                +91 86298-03939
+              </a>
             </li>
             <li className="flex gap-2">
-              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> Contact for details
+              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+              <a href="mailto:amsofit1@gmail.com" className="transition-colors hover:text-foreground">
+                amsofit1@gmail.com
+              </a>
+            </li>
+            <li className="flex gap-2">
+              <Instagram className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+              <a
+                href="https://www.instagram.com/amsofitness"
+                target="_blank"
+                rel="noreferrer"
+                className="transition-colors hover:text-foreground"
+              >
+                @amsofitness
+              </a>
             </li>
           </ul>
 
@@ -120,8 +137,26 @@ export function Footer() {
 
       <div className="border-t border-border">
         <div className="container-page flex flex-col gap-2 py-5 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} AMSOFIT Fitness Equipment. All rights reserved.</p>
-          <p>Built for commercial performance.</p>
+<p>© {new Date().getFullYear()} AMSOFIT Fitness Equipment. All rights reserved.</p>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <p>Built for commercial performance.</p>
+            <a
+              href="https://www.instagram.com/amsofitness"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1 transition-colors hover:text-foreground"
+            >
+              <Instagram className="h-3.5 w-3.5" /> @amsofitness
+            </a>
+            <a
+              href="https://www.instagram.com/fitnesspointgymu"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1 transition-colors hover:text-foreground"
+            >
+              <Instagram className="h-3.5 w-3.5" /> @fitnesspointgymu
+            </a>
+          </div>
         </div>
       </div>
     </footer>
