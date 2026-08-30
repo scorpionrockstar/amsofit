@@ -1,7 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Clock, Instagram, Mail, MapPin, Phone, type LucideIcon } from "lucide-react";
+import {
+  Clock,
+  Instagram,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+  type LucideIcon,
+} from "lucide-react";
 
 import { EnquiryForm } from "@/components/site/EnquiryForm";
+import { whatsappLink } from "@/services/enquiries";
 import { PageHero, Section, SectionHeading } from "@/components/site/Section";
 import hero from "@/assets/cat-functional.jpg";
 
@@ -48,11 +57,18 @@ const details: {
     label: "Address",
     value: "Opposite Reliance Smart Bazaar, Una, Himachal Pradesh, India",
   },
-  {
+{
     icon: Instagram,
     label: "Instagram",
     value: "@amsofitness",
     href: "https://www.instagram.com/amsofitness",
+    external: true,
+  },
+  {
+    icon: MessageCircle,
+    label: "WhatsApp",
+    value: "Chat instantly",
+    href: whatsappLink("Hi AMSOFIT, I'd like to know more about your equipment."),
     external: true,
   },
   { icon: Clock, label: "Hours", value: "Mon – Sat, business hours" },
